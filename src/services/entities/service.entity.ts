@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Bed } from "src/beds/entities/bed.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Service {
@@ -10,4 +11,7 @@ export class Service {
         unique: true,
     })
     name:string
+
+    @OneToMany(() => Bed, (bed) => bed.service)
+    bed: Bed
 }

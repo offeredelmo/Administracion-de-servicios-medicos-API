@@ -38,12 +38,23 @@ export class ServicesService {
   }
 
 
-  update(id: number, updateServiceDto: UpdateServiceDto) {
-    return `This action updates a #${id} service`;
+  async update(id: string, updateServiceDto: UpdateServiceDto) {
+
+    const service = await this.serviceRepository.preload({
+      id_service: id,
+      ...updateServiceDto
+    })
+    if (!service) throw new NotFoundException(`no se encontro el servicio con el id ${id}`)
+    try {
+      await this.serviceRepository.save(service);
+      return `This action updates a #${id} service`;
+    } catch (error) {
+      this.handleDBExceptions(error)
+    }
+   
   }
 
   async remove(uuid: string) {
-   
    const serivece =  await this.serviceRepository.delete(uuid)
    if (serivece.affected === 0) {
     throw new NotFoundException('no se encontro el servicio con el uuid' + uuid);

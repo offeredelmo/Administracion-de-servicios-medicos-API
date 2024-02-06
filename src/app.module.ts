@@ -5,6 +5,8 @@ import { UsersModule } from './users/users.module';
 import { BedsModule } from './beds/beds.module';
 import { ServicesModule } from './services/services.module';
 import { CommonModule } from './common/common.module';
+import { BedsPatientsModule } from './beds_patients/beds_patients.module';
+import { PatientsModule } from './patients/patients.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -21,7 +23,9 @@ import { CommonModule } from './common/common.module';
     UsersModule,
     BedsModule,
     ServicesModule,
-    CommonModule
+    CommonModule,
+    BedsPatientsModule,
+    PatientsModule,
   ],
   controllers: [],
   providers: [],

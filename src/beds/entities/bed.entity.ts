@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Service } from "src/services/entities/service.entity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Bed {
@@ -16,6 +17,9 @@ export class Bed {
         select: false,
         default: false
     })
-    confirmed: boolean
+    avalible: boolean
 
+    @ManyToOne(() => Service, (service) => service.bed)
+    @JoinColumn({ name: "serviceId" })
+    service: Service
 }

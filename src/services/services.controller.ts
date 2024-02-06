@@ -8,7 +8,9 @@ export class ServicesController {
   constructor(private readonly servicesService: ServicesService) {}
 
   @Post()
-  create(@Body() createServiceDto: CreateServiceDto) {
+  create(
+    @Body() createServiceDto: CreateServiceDto
+    ) {
     return this.servicesService.create(createServiceDto);
   }
 
@@ -18,12 +20,17 @@ export class ServicesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateServiceDto: UpdateServiceDto) {
-    return this.servicesService.update(+id, updateServiceDto);
+  update(
+    @Param('id', ParseUUIDPipe) id: string, 
+    @Body() updateServiceDto: UpdateServiceDto
+    ) {
+    return this.servicesService.update(id, updateServiceDto);
   }
 
   @Delete(':uuid')
-  remove(@Param('uuid', ParseUUIDPipe) uuid: string) {
+  remove(
+    @Param('uuid', ParseUUIDPipe) uuid: string
+    ) {
     return this.servicesService.remove(uuid);
   }
   
