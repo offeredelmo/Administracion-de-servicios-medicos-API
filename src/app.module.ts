@@ -7,6 +7,9 @@ import { ServicesModule } from './services/services.module';
 import { CommonModule } from './common/common.module';
 import { BedsPatientsModule } from './beds_patients/beds_patients.module';
 import { PatientsModule } from './patients/patients.module';
+import { DiagnosesModule } from './diagnoses/diagnoses.module';
+import { TasksModule } from './tasks/tasks.module';
+import { StayHistoryModule } from './stay_history/stay_history.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -26,6 +29,9 @@ import { PatientsModule } from './patients/patients.module';
     CommonModule,
     BedsPatientsModule,
     PatientsModule,
+    DiagnosesModule,
+    TasksModule,
+    StayHistoryModule,
   ],
   controllers: [],
   providers: [],

@@ -1,10 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BedsPatient } from "src/beds_patients/entities/beds_patient.entity";
+import { Task } from "src/tasks/entities/task.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 export enum UserRole {
     ADMIN = "admin",
     DOC = "doc"
 }
-
 
 
 @Entity()
@@ -52,5 +53,12 @@ export class User {
         default: false
     })
     confirmed: boolean
+
+    @OneToMany(() => Task, (task) => task.stayHistory)
+    task: Task
+
+    @OneToMany(() => BedsPatient, (BedsPatient) => BedsPatient.user)
+    bedsPatient: BedsPatient
+
 
 }

@@ -1,5 +1,6 @@
+import { BedsPatient } from "src/beds_patients/entities/beds_patient.entity";
 import { Service } from "src/services/entities/service.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Bed {
@@ -22,4 +23,7 @@ export class Bed {
     @ManyToOne(() => Service, (service) => service.bed)
     @JoinColumn({ name: "serviceId" })
     service: Service
+
+    @OneToMany(() => BedsPatient, bedsPatient => bedsPatient.bed)
+    bedsPatient: BedsPatient;  
 }
