@@ -11,17 +11,17 @@ export class BedsPatient {
 
     @ManyToOne(() => Bed, (bed) => bed.bedsPatient)
     @JoinColumn({ name: "id_bed" })
-    bed: Bed
+    bed: string
 
     @ManyToOne(() => Patient, (patient) => patient.bedsPatient)
     @JoinColumn({ name: "id_patient" })
-    patient: Patient
+    patient: string
 
     @ManyToOne(() => User, (user) => user.bedsPatient)
     @JoinColumn({ name: "id_user" })
-    user: User
+    user: string
 
     @ManyToMany(() => StayHistory)
     @JoinTable({name: "beds_patient_stay_history"})
-    stayHistory: StayHistory
+    stayHistory: string
 }

@@ -13,5 +13,5 @@ export class Service {
     name:string
 
     @OneToMany(() => Bed, (bed) => bed.service)
-    bed: Bed
+    bed?: Bed[]
 }

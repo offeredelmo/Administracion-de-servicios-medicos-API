@@ -48,11 +48,16 @@ export class User {
     rol: UserRole
 
     @Column({
-        type: 'boolean',
-        select: false,
+        type: 'bool',
         default: false
     })
     confirmed: boolean
+
+    @Column({
+        type: 'bool',
+        default: false
+    })
+    isActive: boolean
 
     @OneToMany(() => Task, (task) => task.stayHistory)
     task: Task

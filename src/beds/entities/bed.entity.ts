@@ -9,19 +9,19 @@ export class Bed {
 
     @Column({
         type:'float',
-        nullable: false
+        nullable: false,
+        unique: true
     })
     number_bed: number
 
     @Column({
         type: 'boolean',
-        select: false,
         default: false
     })
     avalible: boolean
 
     @ManyToOne(() => Service, (service) => service.bed)
-    @JoinColumn({ name: "serviceId" })
+    @JoinColumn({ name: "service_id" })
     service: Service
 
     @OneToMany(() => BedsPatient, bedsPatient => bedsPatient.bed)

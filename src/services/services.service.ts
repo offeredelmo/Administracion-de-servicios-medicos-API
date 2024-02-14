@@ -29,7 +29,7 @@ export class ServicesService {
 
   async findAll() {
     try {
-      const listServices: Service[] = await this.serviceRepository.find()
+      const listServices: Service[] = await this.serviceRepository.find({relations: ['bed']})
       return listServices;
     } catch (error) {
       throw new InternalServerErrorException("un error ocurrio al listar los servicios")

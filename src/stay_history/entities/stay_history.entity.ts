@@ -31,7 +31,7 @@ export class StayHistory {
 
     @ManyToOne(() => Patient, (patient) => patient.stayHistory)
     @JoinColumn({ name: "id_patient" })
-    patient: Patient
+    patient: string
 
 
     @OneToMany(() => Task, (task) => task.user_create)

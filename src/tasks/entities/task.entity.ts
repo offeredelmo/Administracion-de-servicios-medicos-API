@@ -20,13 +20,13 @@ export class Task {
 
     @ManyToOne(() => StayHistory, (stayHistory) => stayHistory.task)
     @JoinColumn({ name: "id_stay_history" })
-    stayHistory: StayHistory
+    stayHistory: string
 
     @ManyToOne(() => User, (user) => user.task)
     @JoinColumn({ name: "id_user_create" })
-    user_create: User
+    user_create: string
 
     @ManyToOne(() => User, (user) => user.task)
     @JoinColumn({ name: "id_user_complete" })
-    user_complete: User
+    user_complete: string
 }

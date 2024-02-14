@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe } from '@nestjs/common';
 import { BedsService } from './beds.service';
 import { CreateBedDto } from './dto/create-bed.dto';
 import { UpdateBedDto } from './dto/update-bed.dto';
+import { Bed } from './entities/bed.entity';
 
 @Controller('beds')
 export class BedsController {
@@ -12,19 +13,14 @@ export class BedsController {
     return this.bedsService.create(createBedDto);
   }
 
-  @Get()
-  findAll() {
-    return this.bedsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.bedsService.findOne(+id);
+  @Patch(':id')
+  updateNumberbed(@Param('id') id: string, @Body() updateBedDto: UpdateBedDto) {
+    return this.bedsService.updateNumberbed(id, updateBedDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBedDto: UpdateBedDto) {
-    return this.bedsService.update(+id, updateBedDto);
+  swapAvalibleBed(@Param(':id') id:string){
+    return this.bedsService.swapAvalibleBed(id)
   }
 
   @Delete(':id')
